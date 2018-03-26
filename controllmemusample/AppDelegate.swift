@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var width: CGFloat!
     var height: CGFloat!
     var posArray = [CGFloat]()
+    var db: Firestore!
     
     
     
@@ -48,12 +49,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         application.registerForRemoteNotifications()
         // Firebase初期設定
         FirebaseApp.configure()
-        
+        db = Firestore.firestore()
         // アプリ起動時にFCMのトークンを取得し、表示する
-        let token = Messaging.messaging().fcmToken
-        print("FCM token: \(token ?? "")")
+        if let token = Messaging.messaging().fcmToken{
+            print(String(describing: type(of: token)))
+            print("FCM token: \(token)")
+            if let uid = Auth.auth().currentUser?.uid{
+                db.collection("users").document(uid).updateData(["fcmToken" : token])
+            }
+        }
 
-        
         UINavigationBar.appearance().barTintColor = UIColor.white
         var viewControllers: [UIViewController] = []
         

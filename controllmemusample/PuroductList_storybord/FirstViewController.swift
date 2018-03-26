@@ -74,37 +74,7 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         imagePathArray = [String]()
         let storage = Storage.storage().reference()
         db1 = Firestore.firestore()
-        
-        //サンプル
-        if let uid = Auth.auth().currentUser?.uid{
-           print("ユーザーIDは\(uid)")
-            db1.collection("matchProduct").whereField("exhibitorID", isEqualTo: uid).addSnapshotListener({ (snap, error) in
-                if let error = error{
-                    guard let snapshot = snap else {
-                        print("Error fetching snapshots: \(error)")
-                        return
-                    }
-                    snapshot.documentChanges.forEach({ (diff) in
-                        if (diff.type == .added) {
-                            print("追加されたんご")
-                            print("New city: \(diff.document.data())")
-                        }
-                        if (diff.type == .modified) {
-                            print("変更されたんご")
-                            print("Modified city: \(diff.document.data())")
-                        }
-                        if (diff.type == .removed) {
-                            print("削除されたんご")
-                            print("Removed city: \(diff.document.data())")
-                        }
-                    })
-                }
-            })
-        }
-        
-        
-        
-        
+    
         db1.collection("1").getDocuments { (snap, error) in
             if let error = error{
                 print("Error getting documents: \(error)")
