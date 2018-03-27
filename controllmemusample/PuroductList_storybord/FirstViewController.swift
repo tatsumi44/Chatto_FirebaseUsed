@@ -18,6 +18,7 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var postButton: UIBarButtonItem!
     
+    @IBOutlet weak var navigationbar: UINavigationBar!
     
     
     var db1: Firestore!
@@ -44,14 +45,24 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
+        let myRightButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.post))
+        self.navigationItem.rightBarButtonItem = myRightButton
+        
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         posArray = appDelegate.posArray
         self.coachMarksController.dataSource = self
         print(posArray)
         
+        
        
+    }
+    @objc func post(sender: UIButton){
+        
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -152,15 +163,19 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         print("これは\([cell.frame.origin.x,cell.frame.origin.y,cell.frame.width,cell.frame.height])")
         cellOfPosArray.append([cell.frame.origin.x,cell.frame.origin.y,cell.frame.width,cell.frame.height])
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
-        imageView.frame.size.width = mainCollectionView.frame.size.width/2-5.0
-        imageView.layer.cornerRadius = 10.0
+        imageView.frame.size.width = cell.frame.width
+        imageView.frame.size.height = cell.frame.height/4 * 3
+//        cell.backgroundColor = UIColor.orange
+        cell.layer.borderColor = UIColor.orange.cgColor
+        cell.layer.borderWidth = 1
+        imageView.layer.cornerRadius = 4.0
         imageView.layer.masksToBounds = true
         let nameLabel = cell.contentView.viewWithTag(2) as! UILabel
         let priceLabel = cell.contentView.viewWithTag(3) as! UILabel
         let placeLabel = cell.contentView.viewWithTag(4) as! UILabel
         nameLabel.text = productArray[indexPath.row].productName
-        nameLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
-        priceLabel.text = productArray[indexPath.row].price
+//        nameLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
+        priceLabel.text = "¥\(productArray[indexPath.row].price!)"
         placeLabel.text = productArray[indexPath.row].place
         //getmainArrayにあるpathをurl型に変換しimageViewに描画
         getmainArray[indexPath.row].downloadURL { url, error in
@@ -181,9 +196,17 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellSize1:CGFloat = mainCollectionView.frame.size.width/2-5.0
-        let cellSize2: CGFloat = mainCollectionView.frame.size.height/2
+        let cellSize1:CGFloat = mainCollectionView.frame.size.width/3 - 3
+        let cellSize2: CGFloat = mainCollectionView.frame.size.height/3 - 3
         return CGSize(width: cellSize1, height: cellSize2)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -229,7 +252,6 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         pointOfInterest5.frame = CGRect(x: cellOfPosArray[0][0], y: cellOfPosArray[0][1], width: cellOfPosArray[0][2], height: cellOfPosArray[0][3])
         
         
-        
         let pointOfInterestArray = [pointOfInterest,pointOfInterest1,pointOfInterest2,pointOfInterest3,pointOfInterest4,pointOfInterest5]
         //        pointOfInterest.backgroundColor = UIColor.orange
         return coachMarksController.helper.makeCoachMark(for: pointOfInterestArray[index])
@@ -239,8 +261,4 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         return 6
     }
 
-    
-    
-    
-    
 }

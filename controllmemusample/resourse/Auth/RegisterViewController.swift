@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class RegisterViewController: UIViewController {
-
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var gradeTextField: UITextField!
     @IBOutlet weak var courseTextField: UITextField!
@@ -24,8 +24,6 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -34,14 +32,14 @@ class RegisterViewController: UIViewController {
         uid = user?.uid
         email = user?.email
         db = Firestore.firestore()
-       
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func registerButton(_ sender: UIButton) {
         name = nameTextField.text
         grade = gradeTextField.text
@@ -55,20 +53,16 @@ class RegisterViewController: UIViewController {
             //初回チュートリアルFirstViewContoroller切り替え用
             "firstViewIntroduction": false,
             "produntDetailIntroduction": false
-            ]){ err in
-                if let err = err {
-                    print("Error writing document: \(err)")
-                } else {
-                    let storyboard = UIStoryboard(name: "A", bundle: nil)
-                    let dstView = storyboard.instantiateViewController(withIdentifier: "FirstViewController")
-                    self.tabBarController?.present(dstView, animated: true, completion: nil)
-                    //ウルトラ重要、おそらくrootViewControllerが重なっているので解放が必要。
-                    UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
-                }
+        ]){ err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                let storyboard = UIStoryboard(name: "A", bundle: nil)
+                let dstView = storyboard.instantiateViewController(withIdentifier: "FirstViewController")
+                self.tabBarController?.present(dstView, animated: true, completion: nil)
+                //ウルトラ重要、おそらくrootViewControllerが重なっているので解放が必要。
+                UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
+            }
         }
     }
-    
-    
-   
-
 }

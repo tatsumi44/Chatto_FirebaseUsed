@@ -59,7 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
 
-        UINavigationBar.appearance().barTintColor = UIColor.white
+        UINavigationBar.appearance().barTintColor = UIColor.orange
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor:  UIColor.white]
         var viewControllers: [UIViewController] = []
         
         // 1ページ目になるViewController
