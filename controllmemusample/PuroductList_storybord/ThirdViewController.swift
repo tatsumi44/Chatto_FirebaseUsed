@@ -87,8 +87,12 @@ class ThirdViewController: UIViewController,UICollectionViewDataSource,UICollect
         cell.layer.masksToBounds = true
         //セルの中にあるimageViewを指定tag = 1
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
-        imageView.frame.size.width = mainCollectionView.frame.size.width/2-5.0
-        imageView.layer.cornerRadius = 10.0
+        imageView.frame.size.width = cell.frame.size.width
+        imageView.frame.size.height = cell.frame.size.height/4 * 3
+        imageView.layer.cornerRadius = 4
+        cell.layer.cornerRadius = 4
+        cell.layer.borderColor = UIColor.orange.cgColor
+        cell.layer.borderWidth = 1.0
         imageView.layer.masksToBounds = true
         let nameLabel = cell.contentView.viewWithTag(2) as! UILabel
         let priceLabel = cell.contentView.viewWithTag(3) as! UILabel
@@ -96,7 +100,7 @@ class ThirdViewController: UIViewController,UICollectionViewDataSource,UICollect
         placeLabel.text = productArray[indexPath.row].place
         nameLabel.text = productArray[indexPath.row].productName
         nameLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
-        priceLabel.text = productArray[indexPath.row].price
+        priceLabel.text = "¥\(productArray[indexPath.row].price!)"
         //getmainArrayにあるpathをurl型に変換しimageViewに描画
         getmainArray[indexPath.row].downloadURL { url, error in
             if let error = error {
@@ -116,10 +120,17 @@ class ThirdViewController: UIViewController,UICollectionViewDataSource,UICollect
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellSize1:CGFloat = mainCollectionView.frame.size.width/2-5.0
-        let cellSize2: CGFloat = mainCollectionView.frame.size.height/2
+        let cellSize1:CGFloat = mainCollectionView.frame.size.width/3 - 3
+        let cellSize2: CGFloat = mainCollectionView.frame.size.height/3 - 3
         // 正方形で返すためにwidth,heightを同じにする
         return CGSize(width: cellSize1, height: cellSize2)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

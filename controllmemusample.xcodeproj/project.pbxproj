@@ -48,7 +48,6 @@
 		B99B482A20651ECE00D7335F /* kanematsu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B99B482920651ECE00D7335F /* kanematsu.jpg */; };
 		B99B482C2065257400D7335F /* Kanematsu_auditorium.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B99B482B2065257400D7335F /* Kanematsu_auditorium.jpg */; };
 		B99B482E206536C400D7335F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B99B482D206536C300D7335F /* GoogleService-Info.plist */; };
-		B9B0DA68206A4A0200172069 /* custombar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B0DA67206A4A0200172069 /* custombar.swift */; };
 		B9D7D8DE203F2FA00028EF07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D8DD203F2FA00028EF07 /* AppDelegate.swift */; };
 		B9D7D8E0203F2FA00028EF07 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D7D8DF203F2FA00028EF07 /* ViewController.swift */; };
 		B9D7D8E5203F2FA00028EF07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D7D8E4203F2FA00028EF07 /* Assets.xcassets */; };
@@ -116,7 +115,6 @@
 		B99B482920651ECE00D7335F /* kanematsu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kanematsu.jpg; sourceTree = "<group>"; };
 		B99B482B2065257400D7335F /* Kanematsu_auditorium.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Kanematsu_auditorium.jpg; sourceTree = "<group>"; };
 		B99B482D206536C300D7335F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		B9B0DA67206A4A0200172069 /* custombar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = custombar.swift; sourceTree = "<group>"; };
 		B9D7D8DA203F2FA00028EF07 /* controllmemusample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = controllmemusample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9D7D8DD203F2FA00028EF07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9D7D8DF203F2FA00028EF07 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -314,7 +312,6 @@
 				B97F9CF7204EA0C100EADB20 /* Event */,
 				B93C8AF72051172A007ABFA7 /* evaluation */,
 				B9FCD6C42058F26C0022EB9E /* MyPostList */,
-				B9B0DA67206A4A0200172069 /* custombar.swift */,
 			);
 			path = controllmemusample;
 			sourceTree = "<group>";
@@ -538,7 +535,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9B0DA68206A4A0200172069 /* custombar.swift in Sources */,
 				B935015A20404D08000F554B /* OtherMenuViewController.swift in Sources */,
 				B9D7D910204027850028EF07 /* RegisterViewController.swift in Sources */,
 				B99025C3204560E000EC7108 /* PurchasedViewController.swift in Sources */,

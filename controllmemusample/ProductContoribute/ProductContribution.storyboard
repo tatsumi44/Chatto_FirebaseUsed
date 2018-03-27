@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5n3-ie-muz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5Pa-Z0-9yL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -110,7 +110,7 @@
         <!--Category Select View Controller-->
         <scene sceneID="Cvn-ZP-g3v">
             <objects>
-                <viewController id="5Pa-Z0-9yL" customClass="CategorySelectViewController" customModule="controllmemusample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="CategorySelect" storyboardIdentifier="CategorySelect" id="5Pa-Z0-9yL" customClass="CategorySelectViewController" customModule="controllmemusample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Duj-hI-dgN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,13 +146,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jJo-Bo-xhB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Lnr-ot-C30">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="back22.png" id="RKH-XT-rCn">
-                            <connections>
-                                <action selector="back:" destination="5Pa-Z0-9yL" id="rzA-4a-Smo"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <segue destination="3Yx-7B-R1Z" kind="show" identifier="productContribution" id="yME-vZ-Dm3"/>
                     </connections>
@@ -161,26 +154,5 @@
             </objects>
             <point key="canvasLocation" x="4439.1999999999998" y="198.35082458770617"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Qgl-gZ-fRf">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5n3-ie-muz" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xc9-5T-0Zb">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="5Pa-Z0-9yL" kind="relationship" relationship="rootViewController" id="G8W-KN-cgv"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="llo-TC-9Li" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3652" y="197"/>
-        </scene>
     </scenes>
-    <resources>
-        <image name="back22.png" width="16" height="16"/>
-    </resources>
 </document>

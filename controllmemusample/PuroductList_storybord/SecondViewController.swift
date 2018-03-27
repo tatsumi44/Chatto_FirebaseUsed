@@ -29,7 +29,8 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
         super.viewDidLoad()
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
-        
+        self.navigationItem.title = "侍"
+
         
         // Do any additional setup after loading the view.
     }
@@ -83,19 +84,22 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        cell.layer.cornerRadius = 10.0
+        cell.layer.cornerRadius = 4.0
         cell.layer.masksToBounds = true
         //セルの中にあるimageViewを指定tag = 1
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
-        imageView.frame.size.width = mainCollectionView.frame.size.width/2-5.0
-        imageView.layer.cornerRadius = 10.0
+        imageView.frame.size.width = cell.frame.size.width
+        imageView.frame.size.height = cell.frame.size.height/4 * 3
+        imageView.layer.cornerRadius = 4.0
         imageView.layer.masksToBounds = true
+        cell.layer.borderColor = UIColor.orange.cgColor
+        cell.layer.borderWidth = 1.0
         let nameLabel = cell.contentView.viewWithTag(2) as! UILabel
         let priceLabel = cell.contentView.viewWithTag(3) as! UILabel
         let placeLabel = cell.contentView.viewWithTag(4) as! UILabel
         nameLabel.text = productArray[indexPath.row].productName
-        nameLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
-        priceLabel.text = productArray[indexPath.row].price
+//        nameLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
+        priceLabel.text = "¥\(productArray[indexPath.row].price!)"
         placeLabel.text = productArray[indexPath.row].place
         //getmainArrayにあるpathをurl型に変換しimageViewに描画
         getmainArray[indexPath.row].downloadURL { url, error in
@@ -116,10 +120,17 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellSize1:CGFloat = mainCollectionView.frame.size.width/2-5.0
-        let cellSize2: CGFloat = mainCollectionView.frame.size.height/2
+        let cellSize1:CGFloat = mainCollectionView.frame.size.width/3 - 3
+        let cellSize2: CGFloat = mainCollectionView.frame.size.height/3 - 3
         
         return CGSize(width: cellSize1, height: cellSize2)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -129,4 +140,5 @@ class SecondViewController: UIViewController,UICollectionViewDataSource,UICollec
         appDelegate.cellOfNum = self.cellOfNum
         appDelegate.sectionID = self.sectionID
     }
+    
 }

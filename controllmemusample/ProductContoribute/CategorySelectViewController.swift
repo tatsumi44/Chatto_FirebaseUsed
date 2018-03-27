@@ -16,7 +16,8 @@ class CategorySelectViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let navigationItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.title = "カテゴリー選択"
+        let navigationItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = navigationItem
         
        
@@ -46,9 +47,7 @@ class CategorySelectViewController: UIViewController {
         
     }
 
-    @IBAction func back(_ sender: Any) {
-    dismiss(animated: true, completion: nil)
-    }
+
     
  
 

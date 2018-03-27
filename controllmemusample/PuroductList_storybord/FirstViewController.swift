@@ -48,22 +48,12 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
 
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
-        let myRightButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.post))
-        self.navigationItem.rightBarButtonItem = myRightButton
-        
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         posArray = appDelegate.posArray
         self.coachMarksController.dataSource = self
         print(posArray)
-        
-        
-       
     }
-    @objc func post(sender: UIButton){
-        
-        
-        
-    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if Auth.auth().currentUser != nil{
@@ -112,7 +102,6 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
                 self.mainCollectionView.reloadData()
             }
         }
-        //        self.coachMarksController.overlay.color = UIColor.init(red: 243, green: 152, blue: 0, alpha: 0.01)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -169,6 +158,7 @@ class FirstViewController: UIViewController,UICollectionViewDataSource,UICollect
         cell.layer.borderColor = UIColor.orange.cgColor
         cell.layer.borderWidth = 1
         imageView.layer.cornerRadius = 4.0
+        cell.layer.cornerRadius = 4.0
         imageView.layer.masksToBounds = true
         let nameLabel = cell.contentView.viewWithTag(2) as! UILabel
         let priceLabel = cell.contentView.viewWithTag(3) as! UILabel
