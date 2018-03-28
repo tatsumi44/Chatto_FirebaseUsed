@@ -8,17 +8,22 @@
 
 import UIKit
 import Firebase
-
+import SDWebImage
 class EventViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+
+    @IBOutlet weak var maintableView: UITableView!
     
-    @IBOutlet weak var mainTable: UITableView!
     var db: Firestore!
     var eventArray = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainTable.dataSource = self
-        mainTable.delegate = self
+        maintableView.dataSource = self
+        maintableView.delegate = self
+        self.navigationItem.title = "イベント情報"
+        
+        
+
 
         // Do any additional setup after loading the view.
     }
@@ -26,7 +31,8 @@ class EventViewController: UIViewController,UITableViewDataSource,UITableViewDel
         super.viewWillAppear(animated)
         db = Firestore.firestore()
         eventArray = [Event]()
-        db.collection("event").getDocuments { (snap, error) in
+        maintableView.separatorColor = UIColor.clear
+        self.db.collection("event").getDocuments { (snap, error) in
             if let error = error{
                 print(error.localizedDescription)
             }else{
@@ -34,34 +40,37 @@ class EventViewController: UIViewController,UITableViewDataSource,UITableViewDel
                     let data = document.data()
                     self.eventArray.append(Event(postUserID: data["postUser"] as! String, EventID: document.documentID, eventDate: data["eventDate"] as! String, eventTitle: data["eventTitle"] as! String, evetDetail: data["eventDetail"] as! String))
                 }
-               
-                self.mainTable.reloadData()
-                
+                self.maintableView.reloadData()
             }
-
         }
+        
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return eventArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        print("C")
-        
-//        cell?.textLabel!.numberOfLines = 0
-        let titleLabel = cell?.contentView.viewWithTag(1) as! UILabel
-        let dateLabel = cell?.contentView.viewWithTag(2) as! UILabel
-        let detailLabel = cell?.contentView.viewWithTag(3) as! UILabel
-        let nameLabel = cell?.contentView.viewWithTag(4) as! UILabel
+        let cell = maintableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+
+        cell.layer.borderWidth = 1.0
+        cell.layer.borderColor = UIColor.clear.cgColor
+
+        let imageView = cell.contentView.viewWithTag(1) as! UIImageView
+        let titleLabel = cell.contentView.viewWithTag(2) as! UILabel
+        let dateLabel = cell.contentView.viewWithTag(3) as! UILabel
+        let detailLabel = cell.contentView.viewWithTag(4) as! UILabel
+        let nameLabel = cell.contentView.viewWithTag(5) as! UILabel
+        imageView.layer.cornerRadius = 20.0
+        imageView.layer.masksToBounds = true
+        cell.layer.cornerRadius = 10
+        cell.layer.masksToBounds = true
         detailLabel.numberOfLines = 0
-        
         
         titleLabel.sizeToFit()
         detailLabel.sizeToFit()
         dateLabel.sizeToFit()
         nameLabel.sizeToFit()
+        
         titleLabel.text = self.eventArray[indexPath.row].eventTitle
         detailLabel.text = self.eventArray[indexPath.row].evetDetail
         dateLabel.text = self.eventArray[indexPath.row].eventDate
@@ -71,18 +80,23 @@ class EventViewController: UIViewController,UITableViewDataSource,UITableViewDel
             }else{
                 let data = snap?.data()
                 nameLabel.text = data!["name"] as? String
+                let imagePath = data!["profilePath"] as? String
+                let storage = Storage.storage().reference()
+                let path = storage.child("image/profile/\(imagePath!)")
+                path.downloadURL { url, error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        // Handle any errors
+                    } else {
+                        //imageViewに描画、SDWebImageライブラリを使用して描画
+                        imageView.sd_setImage(with: url!, completed: nil)
+                    }
+                }
             }
         }
-//        nameLabel.text = "辰巳"
-        return cell!
+        
+        return cell
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func postEvent(_ sender: Any) {
-    }
-    
 }
+
