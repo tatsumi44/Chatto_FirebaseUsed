@@ -15,7 +15,7 @@ class PurchasedViewController: UIViewController,UITableViewDataSource,UITableVie
     var buyerName: String!
     var productID: String!
     var roomID: String!
-   
+    
     var cellOfNum: Int!
     var sectionID: String!
     var imageParh: String!
@@ -29,7 +29,7 @@ class PurchasedViewController: UIViewController,UITableViewDataSource,UITableVie
         super.viewDidLoad()
         mainTableView.dataSource = self
         mainTableView.delegate = self
-         mainTableView.rowHeight = 100.0
+        mainTableView.rowHeight = 100.0
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +55,7 @@ class PurchasedViewController: UIViewController,UITableViewDataSource,UITableVie
             }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -65,10 +65,11 @@ class PurchasedViewController: UIViewController,UITableViewDataSource,UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        print([cell?.frame.origin.x,cell?.frame.origin.y,cell?.frame.width,cell?.frame.height])
-        let imageView = cell?.contentView.viewWithTag(1) as! UIImageView
-        let nameLabel = cell?.contentView.viewWithTag(2) as! UILabel
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        print([cell.frame.origin.x,cell.frame.origin.y,cell.frame.width,cell.frame.height])
+        let imageView = cell.contentView.viewWithTag(1) as! UIImageView
+        let nameLabel = cell.contentView.viewWithTag(2) as! UILabel
+        let productNameLabel = cell.contentView.viewWithTag(3) as! UILabel
         let imagePath: String = cellDetailArray[indexPath.row].imagePath!
         let ref = storage.child("image/goods/\(imagePath)")
         print("refは\(ref)")
@@ -90,9 +91,18 @@ class PurchasedViewController: UIViewController,UITableViewDataSource,UITableVie
                     }
                 })
                 
+                self.db.collection(self.cellDetailArray[indexPath.row].sectionID).document(self.cellDetailArray[indexPath.row].productID).getDocument(completion: { (snap, error) in
+                    if let error = error{
+                        print(error.localizedDescription)
+                    }else{
+                        let data = snap?.data()
+                        let name: String = data!["productName"] as! String
+                        productNameLabel.text = "商品名: \(name)"
+                    }
+                })
             }
         }
-        return cell!
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         cellOfNum = indexPath.row

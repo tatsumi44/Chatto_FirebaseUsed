@@ -67,9 +67,10 @@ class ChatListViewController: UIViewController,UITableViewDataSource,UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        let imageView = cell?.contentView.viewWithTag(1) as! UIImageView
-        let nameLabel = cell?.contentView.viewWithTag(2) as! UILabel
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let imageView = cell.contentView.viewWithTag(1) as! UIImageView
+        let nameLabel = cell.contentView.viewWithTag(2) as! UILabel
+        let productNameLabel = cell.contentView.viewWithTag(3) as! UILabel
         let imagePath: String = cellDetailArray[indexPath.row].imagePath!
         let ref = storage.child("image/goods/\(imagePath)")
         print("refは\(ref)")
@@ -86,13 +87,22 @@ class ChatListViewController: UIViewController,UITableViewDataSource,UITableView
                     }else{
                         let data = snap?.data()
                         let name: String = data!["name"] as! String
-                        nameLabel.text = "\(name)"
+                        nameLabel.text = "出品者名: \(name)"
                     }
+                    self.db.collection(self.cellDetailArray[indexPath.row].sectionID).document(self.cellDetailArray[indexPath.row].productID).getDocument(completion: { (snap, error) in
+                        if let error = error{
+                            print(error.localizedDescription)
+                        }else{
+                            let data = snap?.data()
+                            let name: String = data!["productName"] as! String
+                            productNameLabel.text = "商品名: \(name)"
+                        }
+                    })
                 })
                 
             }
         }
-        return cell!
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -147,7 +147,22 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
     //セルのクリックイベント
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("section\(indexPath.section):row\(indexPath.row)")
-        
+        if indexPath.section == 0{
+            switch indexPath.row{
+            case 0:
+                print("まだ")
+            case 1:
+                performSegue(withIdentifier: "placePoint", sender: nil)
+            case 2:
+                performSegue(withIdentifier: "postPoint", sender: nil)
+            case 3:
+                performSegue(withIdentifier: "chatPoint", sender: nil)
+            default:
+                return
+            }
+        }
+
+       
         if indexPath.section == 1 && indexPath.row == 0{
             logout()
         }
