@@ -31,7 +31,10 @@ class OtherMenuViewController: UIViewController,UITableViewDataSource,UIImagePic
         menuTableView.dataSource = self
         menuTableView.delegate = self
         menuTableView.rowHeight = 60
-        
+        self.navigationItem.title = "その他"
+        let width = imageView.frame.width
+        imageView.layer.cornerRadius = width/2
+        imageView.layer.masksToBounds = true
         // Do any additional setup after loading the view.
     }
     

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A4C54ABC4DA7492FA0C44A1B /* Pods_controllmemusample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4933FA21958E3CFA92A1C683 /* Pods_controllmemusample.framework */; };
+		B9176079206CB6F10019B2DC /* ViewEvaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9176078206CB6F10019B2DC /* ViewEvaluation.swift */; };
+		B917607B206CC02D0019B2DC /* CurriculumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B917607A206CC02D0019B2DC /* CurriculumDetailViewController.swift */; };
 		B917CF402049230C0074B846 /* Post.png in Resources */ = {isa = PBXBuildFile; fileRef = B917CF3F2049230C0074B846 /* Post.png */; };
 		B917CF4220497D3A0074B846 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B917CF4120497D3A0074B846 /* ChatList.swift */; };
 		B917CF442049A83E0074B846 /* PurchasedChatlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = B917CF432049A83E0074B846 /* PurchasedChatlist.swift */; };
@@ -75,6 +77,8 @@
 		14876070071AE01B4FF58E63 /* Pods-controllmemusample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-controllmemusample.release.xcconfig"; path = "Pods/Target Support Files/Pods-controllmemusample/Pods-controllmemusample.release.xcconfig"; sourceTree = "<group>"; };
 		4933FA21958E3CFA92A1C683 /* Pods_controllmemusample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_controllmemusample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B91583032067A62E00D4E524 /* controllmemusample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = controllmemusample.entitlements; sourceTree = "<group>"; };
+		B9176078206CB6F10019B2DC /* ViewEvaluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEvaluation.swift; sourceTree = "<group>"; };
+		B917607A206CC02D0019B2DC /* CurriculumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurriculumDetailViewController.swift; sourceTree = "<group>"; };
 		B917CF3F2049230C0074B846 /* Post.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Post.png; sourceTree = "<group>"; };
 		B917CF4120497D3A0074B846 /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		B917CF432049A83E0074B846 /* PurchasedChatlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedChatlist.swift; sourceTree = "<group>"; };
@@ -239,6 +243,8 @@
 				B93C8AFA2052A50D007ABFA7 /* ClassSarchViewController.swift */,
 				B93C8AFC2052D0B2007ABFA7 /* SearchListViewController.swift */,
 				B93C8AF820511769007ABFA7 /* Evaluation.swift */,
+				B9176078206CB6F10019B2DC /* ViewEvaluation.swift */,
+				B917607A206CC02D0019B2DC /* CurriculumDetailViewController.swift */,
 			);
 			path = evaluation;
 			sourceTree = "<group>";
@@ -535,6 +541,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9176079206CB6F10019B2DC /* ViewEvaluation.swift in Sources */,
 				B935015A20404D08000F554B /* OtherMenuViewController.swift in Sources */,
 				B9D7D910204027850028EF07 /* RegisterViewController.swift in Sources */,
 				B99025C3204560E000EC7108 /* PurchasedViewController.swift in Sources */,
@@ -542,6 +549,7 @@
 				B935019B20440CB0000F554B /* ChatViewController.swift in Sources */,
 				B93501922043D7BA000F554B /* ProductDetailViewController.swift in Sources */,
 				B9FCD6CC20599C2A0022EB9E /* MyPostEventListViewController.swift in Sources */,
+				B917607B206CC02D0019B2DC /* CurriculumDetailViewController.swift in Sources */,
 				B97F9CF4204E984800EADB20 /* EventViewController.swift in Sources */,
 				B9D7D8FC203F33970028EF07 /* PageViewController.swift in Sources */,
 				B9FCD6C32058EFA30022EB9E /* MyPostProductListViewController.swift in Sources */,

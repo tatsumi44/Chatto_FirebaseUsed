@@ -10,27 +10,32 @@ import UIKit
 
 class Evaluation {
     var className: String!
+    var teacherName: String!
     var course: String!
     var year: String!
-    var courseTime: String!
-    var dayOfTheWeek: String!
+    var attendance: String!
+    var textbook: String!
     var courseEvaluation: String!
     var different: String!
     var coursedetail: String!
     var postuid: String!
+    var middleExamination: String!
+    var finalExamination: String!
     
-    init(className: String,course: String,year: String,courseTime: String,dayOfTheWeek: String,courseEvaluation: String,different: String,coursedetail: String,postuid: String) {
+    init(className: String,teacherName: String,course: String,year: String,attendance: String,textbook: String,courseEvaluation: String,different: String,coursedetail: String,postuid: String,middleExamination: String,finalExamination: String) {
         
         self.className = className
+        self.teacherName = teacherName
         self.course = course
         self.year = year
-        self.courseTime = courseTime
-        self.dayOfTheWeek = dayOfTheWeek
+        self.attendance = attendance
+        self.textbook = textbook
         self.courseEvaluation = courseEvaluation
         self.different = different
         self.coursedetail = coursedetail
         self.postuid = postuid
-        
+        self.middleExamination = middleExamination
+        self.finalExamination = finalExamination
     }
     
     

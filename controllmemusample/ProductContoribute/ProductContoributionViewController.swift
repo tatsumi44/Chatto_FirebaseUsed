@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import DKImagePickerController
 
-class ProductContoributionViewController: UIViewController,UICollectionViewDataSource,UIImagePickerControllerDelegate,UITextFieldDelegate,UITextViewDelegate {
+class ProductContoributionViewController: UIViewController,UICollectionViewDataSource,UIImagePickerControllerDelegate,UITextFieldDelegate,UITextViewDelegate,UICollectionViewDelegateFlowLayout {
    
     
     var categorynum: Int!
@@ -56,7 +56,9 @@ class ProductContoributionViewController: UIViewController,UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        imageview = cell.contentView.viewWithTag(1) as! UIImageView
+        let imageview = cell.contentView.viewWithTag(1) as! UIImageView
+        imageview.frame.size.width = imageCollectionView.frame.width/3 - 3
+        imageview.frame.size.height = imageCollectionView.frame.width/3 - 3
         if imageArray.isEmpty == false{
             imageview.image = imageArray[indexPath.row]
         }else{
@@ -122,6 +124,26 @@ class ProductContoributionViewController: UIViewController,UICollectionViewDataS
             
         }
         photoCount = imageArray.count
+        guard imageArray.count != 0 else{
+            print("画像を選択してください")
+            return
+        }
+        guard productNameTextField.text != "" else {
+            print("名前を決定してください")
+            return
+        }
+        guard priceTextField.text != "" else {
+            print("価格を決定してください")
+            return
+        }
+        guard getProductDecideTextField.text != "" else {
+            print("場所を決定してください")
+            return
+        }
+        guard productDetailTextField.text != "" else {
+            print("詳細を決定してください")
+            return
+        }
     
         db.collection("\(categorynum!)").addDocument(data: [
             "uid": "\(uid!)",
@@ -149,5 +171,20 @@ class ProductContoributionViewController: UIViewController,UICollectionViewDataS
             return false
         }
         return true
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let cellSize1:CGFloat = imageCollectionView.frame.size.width/3 - 3
+        return CGSize(width: cellSize1, height: cellSize1)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
     }
 }

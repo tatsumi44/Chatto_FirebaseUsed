@@ -25,7 +25,7 @@ class SelectListViewController: UIViewController,UITableViewDataSource,UITableVi
         mainTable.dataSource = self
         mainTable.delegate = self
         mainTable.rowHeight = 60
-        
+        self.navigationItem.title = "チャット・投稿情報"
         
         // Do any additional setup after loading the view.
     }

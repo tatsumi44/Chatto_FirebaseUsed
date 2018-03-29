@@ -39,7 +39,7 @@ class SearchListViewController: UIViewController,UITableViewDataSource{
                 }else{
                     for document in (snap?.documents)!{
                         let data = document.data()
-                        self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, course: data["course"] as! String, year: data["year"] as! String, courseTime: data["courseTime"] as! String, dayOfTheWeek: data["dayOfTheWeek"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: data["postUserID"] as! String))
+                        self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, teacherName: data["teacherName"] as! String, course: data["course"] as! String, year: data["year"] as! String, attendance: data["attendance"] as! String, textbook: data["textbook"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: document.documentID, middleExamination: data["middleExamination"] as! String, finalExamination: data["finalExamination"] as! String))
                         print(self.evaluationArray)
                     }
                     self.mainTable.reloadData()
@@ -53,7 +53,8 @@ class SearchListViewController: UIViewController,UITableViewDataSource{
                 }else{
                     for document in (snap?.documents)!{
                         let data = document.data()
-                        self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, course: data["course"] as! String, year: data["year"] as! String, courseTime: data["courseTime"] as! String, dayOfTheWeek: data["dayOfTheWeek"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: data["postUserID"] as! String))
+                              self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, teacherName: data["teacherName"] as! String, course: data["course"] as! String, year: data["year"] as! String, attendance: data["attendance"] as! String, textbook: data["textbook"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: document.documentID, middleExamination: data["middleExamination"] as! String, finalExamination: data["finalExamination"] as! String))
+
                     }
                     self.mainTable.reloadData()
                 }
@@ -65,7 +66,8 @@ class SearchListViewController: UIViewController,UITableViewDataSource{
                 }else{
                     for document in (snap?.documents)!{
                         let data = document.data()
-                        self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, course: data["course"] as! String, year: data["year"] as! String, courseTime: data["courseTime"] as! String, dayOfTheWeek: data["dayOfTheWeek"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: data["postUserID"] as! String))
+                               self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, teacherName: data["teacherName"] as! String, course: data["course"] as! String, year: data["year"] as! String, attendance: data["attendance"] as! String, textbook: data["textbook"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: document.documentID, middleExamination: data["middleExamination"] as! String, finalExamination: data["finalExamination"] as! String))
+
                     }
                     self.mainTable.reloadData()
                 }
@@ -77,8 +79,8 @@ class SearchListViewController: UIViewController,UITableViewDataSource{
                 }else{
                     for document in (snap?.documents)!{
                         let data = document.data()
-                        self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, course: data["course"] as! String, year: data["year"] as! String, courseTime: data["courseTime"] as! String, dayOfTheWeek: data["dayOfTheWeek"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: data["postUserID"] as! String))
-                    }
+                                self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, teacherName: data["teacherName"] as! String, course: data["course"] as! String, year: data["year"] as! String, attendance: data["attendance"] as! String, textbook: data["textbook"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: document.documentID, middleExamination: data["middleExamination"] as! String, finalExamination: data["finalExamination"] as! String))
+                 }
                     self.mainTable.reloadData()
                 }
             })
@@ -89,7 +91,8 @@ class SearchListViewController: UIViewController,UITableViewDataSource{
                 }else{
                     for document in (snap?.documents)!{
                         let data = document.data()
-                        self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, course: data["course"] as! String, year: data["year"] as! String, courseTime: data["courseTime"] as! String, dayOfTheWeek: data["dayOfTheWeek"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: data["postUserID"] as! String))
+                     self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, teacherName: data["teacherName"] as! String, course: data["course"] as! String, year: data["year"] as! String, attendance: data["attendance"] as! String, textbook: data["textbook"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: document.documentID, middleExamination: data["middleExamination"] as! String, finalExamination: data["finalExamination"] as! String))
+
                     }
                     self.mainTable.reloadData()
                 }
@@ -101,7 +104,8 @@ class SearchListViewController: UIViewController,UITableViewDataSource{
                 }else{
                     for document in (snap?.documents)!{
                         let data = document.data()
-                        self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, course: data["course"] as! String, year: data["year"] as! String, courseTime: data["courseTime"] as! String, dayOfTheWeek: data["dayOfTheWeek"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: data["postUserID"] as! String))
+                                  self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, teacherName: data["teacherName"] as! String, course: data["course"] as! String, year: data["year"] as! String, attendance: data["attendance"] as! String, textbook: data["textbook"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: document.documentID, middleExamination: data["middleExamination"] as! String, finalExamination: data["finalExamination"] as! String))
+
                     }
                     self.mainTable.reloadData()
                 }
@@ -113,17 +117,58 @@ class SearchListViewController: UIViewController,UITableViewDataSource{
                 }else{
                     for document in (snap?.documents)!{
                         let data = document.data()
-                        self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, course: data["course"] as! String, year: data["year"] as! String, courseTime: data["courseTime"] as! String, dayOfTheWeek: data["dayOfTheWeek"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: data["postUserID"] as! String))
+                                 self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, teacherName: data["teacherName"] as! String, course: data["course"] as! String, year: data["year"] as! String, attendance: data["attendance"] as! String, textbook: data["textbook"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: document.documentID, middleExamination: data["middleExamination"] as! String, finalExamination: data["finalExamination"] as! String))
+
+                    }
+                    self.mainTable.reloadData()
+                }
+            })
+        case 8:
+            db.collection("courseEvaluation").whereField("\(tagArray[0][0])", isEqualTo: "\(tagArray[0][1])").whereField("\(tagArray[1][0])", isEqualTo: "\(tagArray[1][1])").whereField("\(tagArray[2][0])", isEqualTo: "\(tagArray[2][1])").whereField("\(tagArray[3][0])", isEqualTo: "\(tagArray[3][1])").whereField("\(tagArray[4][0])", isEqualTo: "\(tagArray[4][1])").whereField("\(tagArray[5][0])", isEqualTo: "\(tagArray[5][1])").whereField("\(tagArray[6][0])", isEqualTo: "\(tagArray[6][1])").whereField("\(tagArray[7][0])", isEqualTo: "\(tagArray[7][1])").getDocuments(completion: { (snap, error) in
+                if let error = error{
+                    print("\(error)")
+                }else{
+                    for document in (snap?.documents)!{
+                        let data = document.data()
+                                self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, teacherName: data["teacherName"] as! String, course: data["course"] as! String, year: data["year"] as! String, attendance: data["attendance"] as! String, textbook: data["textbook"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: document.documentID, middleExamination: data["middleExamination"] as! String, finalExamination: data["finalExamination"] as! String))
+
+                    }
+                    self.mainTable.reloadData()
+                }
+            })
+        case 9:
+            db.collection("courseEvaluation").whereField("\(tagArray[0][0])", isEqualTo: "\(tagArray[0][1])").whereField("\(tagArray[1][0])", isEqualTo: "\(tagArray[1][1])").whereField("\(tagArray[2][0])", isEqualTo: "\(tagArray[2][1])").whereField("\(tagArray[3][0])", isEqualTo: "\(tagArray[3][1])").whereField("\(tagArray[4][0])", isEqualTo: "\(tagArray[4][1])").whereField("\(tagArray[5][0])", isEqualTo: "\(tagArray[5][1])").whereField("\(tagArray[6][0])", isEqualTo: "\(tagArray[6][1])").whereField("\(tagArray[7][0])", isEqualTo: "\(tagArray[7][1])").whereField("\(tagArray[8][0])", isEqualTo: "\(tagArray[8][1])").getDocuments(completion: { (snap, error) in
+                if let error = error{
+                    print("\(error)")
+                }else{
+                    for document in (snap?.documents)!{
+                        let data = document.data()
+                                   self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, teacherName: data["teacherName"] as! String, course: data["course"] as! String, year: data["year"] as! String, attendance: data["attendance"] as! String, textbook: data["textbook"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: document.documentID, middleExamination: data["middleExamination"] as! String, finalExamination: data["finalExamination"] as! String))
+
+                    }
+                    self.mainTable.reloadData()
+                }
+            })
+        case 10:
+            db.collection("courseEvaluation").whereField("\(tagArray[0][0])", isEqualTo: "\(tagArray[0][1])").whereField("\(tagArray[1][0])", isEqualTo: "\(tagArray[1][1])").whereField("\(tagArray[2][0])", isEqualTo: "\(tagArray[2][1])").whereField("\(tagArray[3][0])", isEqualTo: "\(tagArray[3][1])").whereField("\(tagArray[4][0])", isEqualTo: "\(tagArray[4][1])").whereField("\(tagArray[5][0])", isEqualTo: "\(tagArray[5][1])").whereField("\(tagArray[6][0])", isEqualTo: "\(tagArray[6][1])").whereField("\(tagArray[7][0])", isEqualTo: "\(tagArray[7][1])").whereField("\(tagArray[8][0])", isEqualTo: "\(tagArray[8][1])").whereField("\(tagArray[9][0])", isEqualTo: "\(tagArray[9][1])").getDocuments(completion: { (snap, error) in
+                if let error = error{
+                    print("\(error)")
+                }else{
+                    for document in (snap?.documents)!{
+                        let data = document.data()
+                           self.evaluationArray.append(Evaluation(className: data["courseName"] as! String, teacherName: data["teacherName"] as! String, course: data["course"] as! String, year: data["year"] as! String, attendance: data["attendance"] as! String, textbook: data["textbook"] as! String, courseEvaluation: data["courseEvaluation"] as! String, different: data["different"] as! String, coursedetail: data["courseDetail"] as! String, postuid: document.documentID, middleExamination: data["middleExamination"] as! String, finalExamination: data["finalExamination"] as! String))
+
                     }
                     self.mainTable.reloadData()
                 }
             })
             
+            
         default:
             return
         }
         print(evaluationArray)
-    
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -149,8 +194,8 @@ class SearchListViewController: UIViewController,UITableViewDataSource{
         courseName.text = evaluationArray[indexPath.row].className
         year.text = evaluationArray[indexPath.row].year
         course.text = evaluationArray[indexPath.row].course
-        dayOfTheWeek.text = evaluationArray[indexPath.row].dayOfTheWeek
-        courseTime.text = evaluationArray[indexPath.row].courseTime
+        dayOfTheWeek.text = evaluationArray[indexPath.row].attendance
+        courseTime.text = evaluationArray[indexPath.row].textbook
         courseEvaluation.text = "授業評価　\(evaluationArray[indexPath.row].courseEvaluation!)"
         courseEvaluation.textColor = UIColor.red
         different.text = "難易度　\(evaluationArray[indexPath.row].different!)"
